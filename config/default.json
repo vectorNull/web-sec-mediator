@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://vectornull:10cbc11wb.77@hackchat.xy7j1.mongodb.net/HackChat?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://vectornull:10cbc11wb.77@hackchat.xy7j1.mongodb.net/HackChat?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
 }
