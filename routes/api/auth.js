@@ -37,12 +37,12 @@ router.post('/', [
         const { email, password } = req.body;
         
         try {
-            // See if user exists ////////////////////////////////////////////////////////////
+            // See if user exists 
             let user = await User.findOne({ email });
             if(!user) {
                 return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });  
             }
-            // Check for correct passwd //////////////////////////////////////////////////////
+            // Check for correct passwd 
             const isMatch = await bcrypt.compare(password, user.password);
             
             if (!isMatch) {
@@ -59,7 +59,7 @@ router.post('/', [
                 if(err) throw err;
                 res.json({ token });
             });
-            ///////////////////////////////////////////////////////////////////////////////////
+           
         } catch(err) {
             console.err(err.message);
             res.status(500).send('Server error');
