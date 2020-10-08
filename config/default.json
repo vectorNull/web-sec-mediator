@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://vectornull:10cbc11wb.77@hackchat.xy7j1.mongodb.net/HackChat?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "ab64893309bda029a3cf",
+    "githubSecret": "a6302e87e648ee5db98c46e945848057d6e9d885"
 }
