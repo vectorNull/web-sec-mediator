@@ -44,18 +44,16 @@ router.post('/', [
             }
             // Check for correct passwd 
             const isMatch = await bcrypt.compare(password, user.password);
-            
             if (!isMatch) {
                 return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
             }
-
             // Return jsonwebtoken that can used to access protected routes / sent with requests
             const payload = {
                 user: {
                     id: user.id
                 }
             }
-            jwt.sign(payload, config.get('jwtSecret'), { expiresIn: 3600 }, (err, token) => {
+            jwt.sign(payload, config.get('jwtSecret'), { expiresIn: '24h' }, (err, token) => {
                 if(err) throw err;
                 res.json({ token });
             });
