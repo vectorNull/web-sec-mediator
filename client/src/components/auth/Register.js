@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // Redux action
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import propTypes from 'prop-types';
 
-const Register = ({ setAlert }) => {			// deconstructed setAlert from props
+const Register = ({ setAlert, register }) => {			// deconstructed setAlert from props
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -23,7 +24,7 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
         if (password !== password2) {
             setAlert('Passwords do not match', 'danger');		// setAlert action called and passed msg and alertType (../actions/alerts)
         } else {
-            console.log('Success!!')
+            register({ name, email, password });
         }
     }
     
@@ -41,7 +42,7 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
                         name='name'
                         value={name}
                         onChange={ e => onChange(e)}
-						required
+						// required
 					/>className
 				</div>
 				<div className='form-group'>
@@ -51,7 +52,7 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
                         name='email'
                         value={email}
                         onChange={ e => onChange(e)}
-                        required
+                        // required
 					/>
 					<small className='form-text'>
 						This site uses Gravatar so if you want a profile image,
@@ -65,8 +66,8 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
                         name='password'
                         value={password}
                         onChange={ e => onChange(e)}
-                        minLength='6'
-                        required
+                        // minLength='6'
+                        // required
 					/>
 				</div>
 				<div className='form-group'>
@@ -76,8 +77,8 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
                         name='password2'
                         value={password2}
                         onChange={ e => onChange(e)}
-                        minLength='6'
-                        required
+                        // minLength='6'
+                        // required
 					/>
 				</div>
 				<input type='submit' className='btn btn-primary' value='Register' />
@@ -90,7 +91,8 @@ const Register = ({ setAlert }) => {			// deconstructed setAlert from props
 }
 
 Register.propTypes = {
-	setAlert: propTypes.func.isRequired
+	setAlert: propTypes.func.isRequired,
+	register: propTypes.func.isRequired,
 }
 
-export default connect(null, { setAlert })(Register); // setAlert export so redux action can be used
+export default connect(null, { setAlert, register })(Register); // setAlert, register export so redux action can be used
