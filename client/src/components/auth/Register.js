@@ -1,7 +1,12 @@
 import React, { Fragment, useState } from 'react';
+// Allows work with Redux
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+// Redux action
+import { setAlert } from '../../actions/alert';
+import propTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert }) => {			// deconstructed setAlert from props
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -16,7 +21,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
-            console.log('Passwords do not match');
+            setAlert('Passwords do not match', 'danger');		// setAlert action called and passed msg and alertType (../actions/alerts)
         } else {
             console.log('Success!!')
         }
@@ -84,4 +89,8 @@ const Register = () => {
 	);
 }
 
-export default Register;
+Register.propTypes = {
+	setAlert: propTypes.func.isRequired
+}
+
+export default connect(null, { setAlert })(Register); // setAlert export so redux action can be used
