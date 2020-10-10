@@ -8,7 +8,7 @@ const Landing = () => {
                 <div className="landing-inner">
                     <h1 className="x-large">WebSec Mediator</h1>
                     <p className="lead">
-                        A space to meet other Web Security Professionals
+                        Hackers, Pentester, Bug Hunters . . . Welcome to the conversation!
                     </p>
                 <div className="buttons">
                     <Link to="/register" className="btn btn-primary">Sign Up</Link>
