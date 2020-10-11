@@ -2,7 +2,7 @@
 
 ## Social Network for Websec Professionals
 
-![alt text]('./client/src/img/WebSecMediator_loginPage.png')
+![alt text](https://github.com/vectorNull/web-sec-mediator/blob/main/client/src/img/WebSecMediator_loginPage.png)
 
 ## Technologies used
 * ES6
