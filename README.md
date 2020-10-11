@@ -2,7 +2,7 @@
 
 ## Social Network for Websec Professionals
 
-
+![alt text]('./client/src/img/WebSecMediator_loginPage.png')
 
 ## Technologies used
 * ES6
