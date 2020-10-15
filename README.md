@@ -2,6 +2,8 @@
 
 ## Social Network for Websec Professionals
 
+This is a simple social media site for WebSec professionals to talk about the latest in Web Security.
+
 ![alt text](https://github.com/vectorNull/web-sec-mediator/blob/main/client/src/img/WebSecMediator_loginPage.png)
 
 ## Technologies used
@@ -43,5 +45,8 @@ This was tougher than I expected, but with a lot of help from StackOverflow, You
 
 Trello Board:
 https://trello.com/b/hbOSDxgQ/websec-mediator
+
+Deployed to Heroku:
+https://websecmediator.herokuapp.com/
 
 
