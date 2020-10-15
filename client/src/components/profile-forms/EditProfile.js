@@ -2,15 +2,14 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profiles'
+import { createProfile, getCurrentProfile } from '../../actions/profiles';
 
-
-const EditProfile = ({ 
-    profile: { profile, loading }, 
-    createProfile, 
-    getCurrentProfile, 
-    history 
-    }) => {
+const EditProfile = ({
+	profile: { profile, loading },
+	createProfile,
+	getCurrentProfile,
+	history,
+}) => {
 	const [formData, setFormData] = useState({
 		company: '',
 		website: '',
@@ -24,28 +23,32 @@ const EditProfile = ({
 		linkedin: '',
 		youtube: '',
 		instagram: '',
-    });
-    
-    const [displaySocialInputs, toggleSocialInputs] = useState(false);
+	});
 
-    useEffect(() => {
-        getCurrentProfile();
+	const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-        setFormData({
-            company: loading || !profile.company ? '' : profile.company,
-            website: loading || !profile.website ? '' : profile.website,
-            location: loading || !profile.location ? '' : profile.location,
-            status: loading || !profile.status ? '' : profile.status,
-            skills: loading || !profile.skills ? '' : profile.skills.join(','),
-            githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
-            bio: loading || !profile.bio ? '' : profile.bio,
-            twitter: loading || !profile.social ? '' : profile.social.twitter,
-            facebook: loading || !profile.social ? '' : profile.social.facebook,
-            linkedin: loading || !profile.social ? '' : profile.social.linkedin,
-            youtube: loading || !profile.social ? '' : profile.social.youtube,
-            instagram: loading || !profile.social ? '' : profile.social.instagram,
-        })
-    }, [loading, getCurrentProfile]);
+	useEffect(() => {
+		getCurrentProfile();
+
+		setFormData({
+			company: loading || !profile.company ? '' : profile.company,
+			website: loading || !profile.website ? '' : profile.website,
+			location: loading || !profile.location ? '' : profile.location,
+			status: loading || !profile.status ? '' : profile.status,
+			skills: loading || !profile.skills ? '' : profile.skills.join(','),
+			githubusername:
+				loading || !profile.githubusername
+					? ''
+					: profile.githubusername,
+			bio: loading || !profile.bio ? '' : profile.bio,
+			twitter: loading || !profile.social ? '' : profile.social.twitter,
+			facebook: loading || !profile.social ? '' : profile.social.facebook,
+			linkedin: loading || !profile.social ? '' : profile.social.linkedin,
+			youtube: loading || !profile.social ? '' : profile.social.youtube,
+			instagram:
+				loading || !profile.social ? '' : profile.social.instagram,
+		});
+	}, [loading, getCurrentProfile]);
 
 	const {
 		company,
@@ -62,21 +65,27 @@ const EditProfile = ({
 		instagram,
 	} = formData;
 
-	const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value});
-	const onSubmit = e => {
+	const onChange = (e) =>
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	const onSubmit = (e) => {
 		e.preventDefault();
 		createProfile(formData, history, true);
-	}
+	};
 
 	return (
 		<Fragment>
 			<h1 className='large text-primary'>Create Your Profile</h1>
 			<small>* = required field</small>
-			<form className='form' onSubmit={e => onSubmit(e)}>
+			<form className='form' onSubmit={(e) => onSubmit(e)}>
 				<div className='form-group'>
-					<select name='status' value={status} onChange={e => onChange(e)}>
+					<select
+						name='status'
+						value={status}
+						onChange={(e) => onChange(e)}>
 						<option value='0'>* Select Professional Status</option>
-						<option value='Web Application Penetration Tester'>Web Application Penetration Tester</option>
+						<option value='Web Application Penetration Tester'>
+							Web Application Penetration Tester
+						</option>
 						<option value='Bug Bounty Hunter'>
 							Bug Bounty Hunter
 						</option>
@@ -98,25 +107,49 @@ const EditProfile = ({
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Company' name='company' value={company} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Company'
+						name='company'
+						value={company}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Could be your own company or one you work for
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Website' name='website' value={website} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Website'
+						name='website'
+						value={website}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Could be your own or a company website
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Location' name='location' value={location} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Location'
+						name='location'
+						value={location}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						City & state suggested (eg. Boston, MA)
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='* Skills' name='skills' value={skills} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='* Skills'
+						name='skills'
+						value={skills}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Please use comma separated values (eg.
 						HTML,CSS,JavaScript,PHP)
@@ -126,7 +159,9 @@ const EditProfile = ({
 					<input
 						type='text'
 						placeholder='Github Username'
-						name='githubusername' value={githubusername} onChange={e => onChange(e)}
+						name='githubusername'
+						value={githubusername}
+						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
 						If you want your latest repos and a Github link, include
@@ -134,9 +169,11 @@ const EditProfile = ({
 					</small>
 				</div>
 				<div className='form-group'>
-					<textarea 
+					<textarea
 						placeholder='A short bio of yourself'
-						name='bio' value={bio} onChange={e => onChange(e)}></textarea>
+						name='bio'
+						value={bio}
+						onChange={(e) => onChange(e)}></textarea>
 					<small className='form-text'>
 						Tell us a little about yourself
 					</small>
@@ -159,7 +196,9 @@ const EditProfile = ({
 							<input
 								type='text'
 								placeholder='Twitter URL'
-								name='twitter' value={twitter} onChange={e => onChange(e)}
+								name='twitter'
+								value={twitter}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -168,7 +207,9 @@ const EditProfile = ({
 							<input
 								type='text'
 								placeholder='Facebook URL'
-								name='facebook' value={facebook} onChange={e => onChange(e)}
+								name='facebook'
+								value={facebook}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -177,7 +218,9 @@ const EditProfile = ({
 							<input
 								type='text'
 								placeholder='YouTube URL'
-								name='youtube' value={youtube} onChange={e => onChange(e)}
+								name='youtube'
+								value={youtube}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -186,7 +229,9 @@ const EditProfile = ({
 							<input
 								type='text'
 								placeholder='Linkedin URL'
-								name='linkedin' value={linkedin} onChange={e => onChange(e)}
+								name='linkedin'
+								value={linkedin}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -195,7 +240,9 @@ const EditProfile = ({
 							<input
 								type='text'
 								placeholder='Instagram URL'
-								name='instagram' value={instagram} onChange={e => onChange(e)}
+								name='instagram'
+								value={instagram}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 					</Fragment>
@@ -211,13 +258,15 @@ const EditProfile = ({
 };
 
 EditProfile.propTypes = {
-    createProfile: propTypes.func.isRequired,
-    getCurrentProfile: propTypes.func.isRequired,
-    profile: propTypes.object.isRequired,
+	createProfile: propTypes.func.isRequired,
+	getCurrentProfile: propTypes.func.isRequired,
+	profile: propTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-    profile: state.profile
-})
+const mapStateToProps = (state) => ({
+	profile: state.profile,
+});
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(withRouter(EditProfile));
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+	withRouter(EditProfile)
+);

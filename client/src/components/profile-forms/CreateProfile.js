@@ -2,8 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../actions/profiles'
-
+import { createProfile } from '../../actions/profiles';
 
 const CreateProfile = ({ createProfile, history }) => {
 	const [formData, setFormData] = useState({
@@ -19,9 +18,9 @@ const CreateProfile = ({ createProfile, history }) => {
 		linkedin: '',
 		youtube: '',
 		instagram: '',
-    });
-    
-    const [displaySocialInputs, toggleSocialInputs] = useState(false);
+	});
+
+	const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
 	const {
 		company,
@@ -38,8 +37,9 @@ const CreateProfile = ({ createProfile, history }) => {
 		instagram,
 	} = formData;
 
-	const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value});
-	const onSubmit = e => {
+	const onChange = (e) =>
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	const onSubmit = (e) => {
 		e.preventDefault();
 		createProfile(formData, history);
 	};
@@ -48,11 +48,16 @@ const CreateProfile = ({ createProfile, history }) => {
 		<Fragment>
 			<h1 className='large text-primary'>Create Your Profile</h1>
 			<small>* = required field</small>
-			<form className='form' onSubmit={e => onSubmit(e)}>
+			<form className='form' onSubmit={(e) => onSubmit(e)}>
 				<div className='form-group'>
-					<select name='status' value={status} onChange={e => onChange(e)}>
+					<select
+						name='status'
+						value={status}
+						onChange={(e) => onChange(e)}>
 						<option value='0'>* Select Professional Status</option>
-						<option value='Web Application Penetration Tester'>Web Application Penetration Tester</option>
+						<option value='Web Application Penetration Tester'>
+							Web Application Penetration Tester
+						</option>
 						<option value='Bug Bounty Hunter'>
 							Bug Bounty Hunter
 						</option>
@@ -74,25 +79,49 @@ const CreateProfile = ({ createProfile, history }) => {
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Company' name='company' value={company} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Company'
+						name='company'
+						value={company}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Could be your own company or one you work for
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Website' name='website' value={website} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Website'
+						name='website'
+						value={website}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Could be your own or a company website
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='Location' name='location' value={location} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='Location'
+						name='location'
+						value={location}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						City & state suggested (eg. Boston, MA)
 					</small>
 				</div>
 				<div className='form-group'>
-					<input type='text' placeholder='* Skills' name='skills' value={skills} onChange={e => onChange(e)} />
+					<input
+						type='text'
+						placeholder='* Skills'
+						name='skills'
+						value={skills}
+						onChange={(e) => onChange(e)}
+					/>
 					<small className='form-text'>
 						Please use comma separated values (eg.
 						HTML,CSS,JavaScript,PHP)
@@ -102,7 +131,9 @@ const CreateProfile = ({ createProfile, history }) => {
 					<input
 						type='text'
 						placeholder='Github Username'
-						name='githubusername' value={githubusername} onChange={e => onChange(e)}
+						name='githubusername'
+						value={githubusername}
+						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
 						If you want your latest repos and a Github link, include
@@ -110,9 +141,11 @@ const CreateProfile = ({ createProfile, history }) => {
 					</small>
 				</div>
 				<div className='form-group'>
-					<textarea 
+					<textarea
 						placeholder='A short bio of yourself'
-						name='bio' value={bio} onChange={e => onChange(e)}></textarea>
+						name='bio'
+						value={bio}
+						onChange={(e) => onChange(e)}></textarea>
 					<small className='form-text'>
 						Tell us a little about yourself
 					</small>
@@ -135,7 +168,9 @@ const CreateProfile = ({ createProfile, history }) => {
 							<input
 								type='text'
 								placeholder='Twitter URL'
-								name='twitter' value={twitter} onChange={e => onChange(e)}
+								name='twitter'
+								value={twitter}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -144,7 +179,9 @@ const CreateProfile = ({ createProfile, history }) => {
 							<input
 								type='text'
 								placeholder='Facebook URL'
-								name='facebook' value={facebook} onChange={e => onChange(e)}
+								name='facebook'
+								value={facebook}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -153,7 +190,9 @@ const CreateProfile = ({ createProfile, history }) => {
 							<input
 								type='text'
 								placeholder='YouTube URL'
-								name='youtube' value={youtube} onChange={e => onChange(e)}
+								name='youtube'
+								value={youtube}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -162,7 +201,9 @@ const CreateProfile = ({ createProfile, history }) => {
 							<input
 								type='text'
 								placeholder='Linkedin URL'
-								name='linkedin' value={linkedin} onChange={e => onChange(e)}
+								name='linkedin'
+								value={linkedin}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 
@@ -171,7 +212,9 @@ const CreateProfile = ({ createProfile, history }) => {
 							<input
 								type='text'
 								placeholder='Instagram URL'
-								name='instagram' value={instagram} onChange={e => onChange(e)}
+								name='instagram'
+								value={instagram}
+								onChange={(e) => onChange(e)}
 							/>
 						</div>
 					</Fragment>
@@ -187,8 +230,7 @@ const CreateProfile = ({ createProfile, history }) => {
 };
 
 CreateProfile.propTypes = {
-	createProfile: propTypes.func.isRequired
+	createProfile: propTypes.func.isRequired,
 };
-
 
 export default connect(null, { createProfile })(withRouter(CreateProfile));
