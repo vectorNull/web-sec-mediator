@@ -38,7 +38,7 @@ This is a simple social media site for WebSec professionals to talk about the la
 * Data in the app is shared amongst different components which could in turn make where to put state a bit confusing. Instead of state having to climb up and down the component tree, components could use state directly.
 * I wanted to learn it (The primary reason)
 
-This was tougher than I expected, but with a lot of help from StackOverflow, YouTube, Redux docs, and kind person from a JS group out of San Diego (who wished to remain anonymous), I was able to incorporate it into my app.
+This was tougher than I expected, but with a lot of help from StackOverflow, YouTube, Redux docs, and several helpful individuals out of San Diego's JS group, I was able to incorporate it into my app.
 
 
 ## Links
