@@ -7,8 +7,8 @@ This is a simple social media site for WebSec professionals to talk about the la
 ![alt text](https://github.com/vectorNull/web-sec-mediator/blob/main/client/src/img/WebSecMediator_loginPage.png)
 
 ## Technologies used
-* ES6
-* NodeJs 
+* JavaScript (ES6)
+* Node 
 * Express
 * React
 * Redux (for state management)
